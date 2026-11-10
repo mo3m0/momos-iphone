@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#f7e9ed">
+
+  <title>Momo's iPhone</title>
+
+  <style>
+
+    * {
+
+      box-sizing: border-box;
+
+    }
+
+    body {
+
+      margin: 0;
+
+      min-height: 100vh;
+
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+
+      background: #f7e9ed;
+
+      color: #44363b;
+
+    }
+
+    .phone {
+
+      min-height: 100vh;
+
+      padding: 24px;
+
+      background:
+
+        linear-gradient(160deg, #f8e8ed, #f3dce5, #e9dce9);
+
+      display: flex;
+
+      flex-direction: column;
+
+    }
+
+    .status {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      font-size: 14px;
+
+      font-weight: 600;
+
+    }
+
+    .clock {
+
+      text-align: center;
+
+      margin-top: 100px;
+
+    }
+
+    .clock h1 {
+
+      font-size: 76px;
+
+      font-weight: 400;
+
+      margin: 0;
+
+      letter-spacing: -4px;
+
+    }
+
+    .clock p {
+
+      font-size: 16px;
+
+      margin-top: 4px;
+
+    }
+
+    .welcome {
+
+      margin-top: auto;
+
+      margin-bottom: 35px;
+
+      text-align: center;
+
+    }
+
+    .welcome h2 {
+
+      font-size: 25px;
+
+      font-weight: 600;
+
+    }
+
+    .welcome p {
+
+      font-size: 14px;
+
+      opacity: 0.7;
+
+    }
+
+    .unlock {
+
+      border: none;
+
+      border-radius: 30px;
+
+      padding: 15px;
+
+      background: rgba(255,255,255,0.65);
+
+      color: #44363b;
+
+      font-size: 16px;
+
+      cursor: pointer;
+
+    }
+
+    .home {
+
+      display: none;
+
+      text-align: center;
+
+      margin: auto;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <main class="phone">
+
+    <div class="status">
+
+      <span>9:41</span>
+
+      <span>●●●  Wi-Fi  ▰</span>
+
+    </div>
+
+    <section class="clock">
+
+      <h1>9:41</h1>
+
+      <p>Tuesday, November 10</p>
+
+    </section>
+
+    <section class="welcome" id="lockScreen">
+
+      <h2>Momo's iPhone</h2>
+
+      <p>♡ A little world of Momo ♡</p>
+
+      <button class="unlock" onclick="unlockPhone()">
+
+        開啟手機
+
+      </button>
+
+    </section>
+
+    <section class="home" id="homeScreen">
+
+      <h2>Welcome home ♡</h2>
+
+      <p>Momo's little world</p>
+
+    </section>
+
+  </main>
+
+  <script>
+
+    function unlockPhone() {
+
+      document.getElementById("lockScreen").style.display = "none";
+
+      document.getElementById("homeScreen").style.display = "block";
+
+    }
+
+  </script>
+
+</body>
+
+</html>
