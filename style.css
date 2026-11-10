@@ -426,3 +426,98 @@ body {
     margin-top: 24%;
   }
 }
+/* iPhone Lock Screen */
+
+.lock-screen {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 125px 24px 30px;
+  color: white;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(20, 25, 50, 0.15),
+      rgba(20, 25, 50, 0.45)
+    ),
+    linear-gradient(135deg, #9caecb, #d5b9c5, #777d9f);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+.lock-date {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.lock-clock {
+  font-size: 82px;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -4px;
+}
+
+.lock-widgets {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 28px;
+}
+
+.lock-widget {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+}
+
+.lock-widget strong {
+  font-size: 22px;
+}
+
+.lock-widget small {
+  font-size: 12px;
+}
+
+.lock-bottom {
+  position: absolute;
+  bottom: 28px;
+  left: 25px;
+  right: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lock-shortcut {
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  background: rgba(255, 255, 255, 0.22);
+  font-size: 21px;
+  backdrop-filter: blur(15px);
+}
+
+.unlock-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.unlock-line {
+  width: 42px;
+  height: 5px;
+  border-radius: 10px;
+  background: white;
+}
