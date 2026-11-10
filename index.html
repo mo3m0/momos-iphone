@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 
 <html lang="zh-Hant">
@@ -12,193 +14,301 @@
 
   <title>Momo's iPhone</title>
 
-  <style>
-
-    * {
-
-      box-sizing: border-box;
-
-    }
-
-    body {
-
-      margin: 0;
-
-      min-height: 100vh;
-
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-
-      background: #f7e9ed;
-
-      color: #44363b;
-
-    }
-
-    .phone {
-
-      min-height: 100vh;
-
-      padding: 24px;
-
-      background:
-
-        linear-gradient(160deg, #f8e8ed, #f3dce5, #e9dce9);
-
-      display: flex;
-
-      flex-direction: column;
-
-    }
-
-    .status {
-
-      display: flex;
-
-      justify-content: space-between;
-
-      font-size: 14px;
-
-      font-weight: 600;
-
-    }
-
-    .clock {
-
-      text-align: center;
-
-      margin-top: 100px;
-
-    }
-
-    .clock h1 {
-
-      font-size: 76px;
-
-      font-weight: 400;
-
-      margin: 0;
-
-      letter-spacing: -4px;
-
-    }
-
-    .clock p {
-
-      font-size: 16px;
-
-      margin-top: 4px;
-
-    }
-
-    .welcome {
-
-      margin-top: auto;
-
-      margin-bottom: 35px;
-
-      text-align: center;
-
-    }
-
-    .welcome h2 {
-
-      font-size: 25px;
-
-      font-weight: 600;
-
-    }
-
-    .welcome p {
-
-      font-size: 14px;
-
-      opacity: 0.7;
-
-    }
-
-    .unlock {
-
-      border: none;
-
-      border-radius: 30px;
-
-      padding: 15px;
-
-      background: rgba(255,255,255,0.65);
-
-      color: #44363b;
-
-      font-size: 16px;
-
-      cursor: pointer;
-
-    }
-
-    .home {
-
-      display: none;
-
-      text-align: center;
-
-      margin: auto;
-
-    }
-
-  </style>
+  <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-  <main class="phone">
+  <main class="device framed" id="device">
 
-    <div class="status">
+    <div class="dynamic-island"></div>
+
+    <div class="status-bar">
 
       <span>9:41</span>
 
-      <span>●●●  Wi-Fi  ▰</span>
+      <span>● ● ● ▰</span>
 
     </div>
 
-    <section class="clock">
+    <!-- Lock Screen -->
 
-      <h1>9:41</h1>
+    <section class="lock-screen" id="lockScreen">
 
-      <p>Tuesday, November 10</p>
+      <div class="lock-clock">9:41</div>
 
-    </section>
+      <div class="lock-date">Tuesday, November 10</div>
 
-    <section class="welcome" id="lockScreen">
+      <div class="lock-bottom">
 
-      <h2>Momo's iPhone</h2>
+        <span>🔦</span>
 
-      <p>♡ A little world of Momo ♡</p>
+        <button onclick="unlockPhone()">點一下解鎖 ↑</button>
 
-      <button class="unlock" onclick="unlockPhone()">
+        <span>📷</span>
 
-        開啟手機
-
-      </button>
+      </div>
 
     </section>
 
-    <section class="home" id="homeScreen">
+    <!-- Home Screen -->
 
-      <h2>Welcome home ♡</h2>
+    <section class="home-screen phone-page" id="homeScreen" hidden>
 
-      <p>Momo's little world</p>
+      <div class="home-widget">
+
+        <p>Good afternoon ♡</p>
+
+        <h2>Momo's iPhone</h2>
+
+        <small>Have a lovely day!</small>
+
+      </div>
+
+      <div class="app-grid">
+
+        <button class="app-icon" onclick="Phone.open('kakaoScreen')">
+
+          <span>💬</span>
+
+          <small>KakaoTalk</small>
+
+        </button>
+
+        <button class="app-icon" onclick="Phone.open('photosScreen')">
+
+          <span>🌸</span>
+
+          <small>Photos</small>
+
+        </button>
+
+        <button class="app-icon" onclick="Phone.open('notesScreen')">
+
+          <span>📝</span>
+
+          <small>Notes</small>
+
+        </button>
+
+        <button class="app-icon" onclick="Phone.open('calendarScreen')">
+
+          <span>📅</span>
+
+          <small>Calendar</small>
+
+        </button>
+
+        <button class="app-icon" onclick="Phone.open('musicScreen')">
+
+          <span>🎵</span>
+
+          <small>Music</small>
+
+        </button>
+
+        <button class="app-icon" onclick="Phone.open('settingsScreen')">
+
+          <span>⚙️</span>
+
+          <small>Settings</small>
+
+        </button>
+
+        <button class="app-icon" onclick="Phone.open('cameraScreen')">
+
+          <span>📷</span>
+
+          <small>Camera</small>
+
+        </button>
+
+        <button class="app-icon" onclick="Phone.open('mailScreen')">
+
+          <span>✉️</span>
+
+          <small>Mail</small>
+
+        </button>
+
+      </div>
+
+      <div class="dock">
+
+        <span>📞</span>
+
+        <span>💬</span>
+
+        <span>🌐</span>
+
+        <span>🎵</span>
+
+      </div>
+
+    </section>
+
+    <!-- KakaoTalk -->
+
+    <section class="app-window kakao-app phone-page" id="kakaoScreen" hidden>
+
+      <header class="kakao-header">
+
+        <button onclick="Phone.home()">‹</button>
+
+        <h2>KakaoTalk</h2>
+
+        <span>＋</span>
+
+      </header>
+
+      <nav class="kakao-tabs">
+
+        <button onclick="showKakaoTab('friends')">Friends</button>
+
+        <button onclick="showKakaoTab('chats')">Chats</button>
+
+        <button onclick="showKakaoTab('profile')">Profile</button>
+
+      </nav>
+
+      <div class="kakao-content">
+
+        <div id="friendsTab">
+
+          <h3>Friends</h3>
+
+          <p>Your friends will appear here ♡</p>
+
+          <button onclick="addDemoFriend()">＋ Add a friend</button>
+
+        </div>
+
+        <div id="chatsTab" hidden>
+
+          <h3>Chats</h3>
+
+          <p>Your conversations will appear here.</p>
+
+        </div>
+
+        <div id="profileTab" hidden>
+
+          <h3>My Profile</h3>
+
+          <p>Momo ♡</p>
+
+        </div>
+
+      </div>
+
+      <div class="kakao-yellow">
+
+        KakaoTalk
+
+      </div>
+
+    </section>
+
+    <!-- Other App Screens -->
+
+    <section class="app-window phone-page" id="photosScreen" hidden>
+
+      <h2>Photos</h2>
+
+      <button onclick="Phone.home()">‹ Home</button>
+
+    </section>
+
+    <section class="app-window phone-page" id="notesScreen" hidden>
+
+      <h2>Notes</h2>
+
+      <button onclick="Phone.home()">‹ Home</button>
+
+    </section>
+
+    <section class="app-window phone-page" id="calendarScreen" hidden>
+
+      <h2>Calendar</h2>
+
+      <button onclick="Phone.home()">‹ Home</button>
+
+    </section>
+
+    <section class="app-window phone-page" id="musicScreen" hidden>
+
+      <h2>Music</h2>
+
+      <button onclick="Phone.home()">‹ Home</button>
+
+    </section>
+
+    <section class="app-window phone-page" id="settingsScreen" hidden>
+
+      <h2>Settings</h2>
+
+      <button onclick="Phone.home()">‹ Home</button>
+
+    </section>
+
+    <section class="app-window phone-page" id="cameraScreen" hidden>
+
+      <h2>Camera</h2>
+
+      <button onclick="Phone.home()">‹ Home</button>
+
+    </section>
+
+    <section class="app-window phone-page" id="mailScreen" hidden>
+
+      <h2>Mail</h2>
+
+      <button onclick="Phone.home()">‹ Home</button>
 
     </section>
 
   </main>
 
+  <script src="app.js"></script>
+
   <script>
 
     function unlockPhone() {
 
-      document.getElementById("lockScreen").style.display = "none";
+      document.getElementById("lockScreen").hidden = true;
 
-      document.getElementById("homeScreen").style.display = "block";
+      document.getElementById("homeScreen").hidden = false;
+
+    }
+
+    function showKakaoTab(tab) {
+
+      ["friends", "chats", "profile"].forEach(name => {
+
+        document.getElementById(name + "Tab").hidden = name !== tab;
+
+      });
+
+    }
+
+    function addDemoFriend() {
+
+      const name = prompt("Enter your friend's name:");
+
+      if (!name || !name.trim()) return;
+
+      const friend = KakaoTalk.addFriend(name.trim());
+
+      StoryStorage.save();
+
+      const list = document.getElementById("friendsTab");
+
+      const item = document.createElement("p");
+
+      item.textContent = "👤 " + friend.name;
+
+      list.appendChild(item);
 
     }
 
