@@ -1,239 +1,428 @@
 
-/* Momo's iPhone - iOS Interface */
+/* =================================
+   MOMO'S IPHONE
+   iOS-inspired interface
+================================= */
 
 :root {
-  --pink: #f3e1e9;
-  --ink: #393239;
-  --glass: rgba(255,255,255,.72);
+  --pink: #f7e9ed;
+  --ink: #25232a;
+  --glass: rgba(255, 255, 255, 0.75);
   --kakao: #fee500;
+  --screen-bg: #f8f4f3;
 }
 
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont,
+    "Helvetica Neue", Arial, sans-serif;
+  color: var(--ink);
 }
 
 body {
-  margin: 0;
-  min-height: 100vh;
-  background: #e8e5e8;
-  color: var(--ink);
-  font-family: -apple-system, BlinkMacSystemFont,
-    "Helvetica Neue", sans-serif;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  background:
+    radial-gradient(circle at top, #fff7f9, transparent 55%),
+    linear-gradient(135deg, #eadde5, #d9d9e8);
 }
 
-button {
-  font: inherit;
-  cursor: pointer;
-}
-
-/* Device presentation */
+/* =================================
+   PHONE FRAME
+================================= */
 
 .device {
-  width: min(100%, 430px);
-  min-height: 100dvh;
-  margin: auto;
   position: relative;
+  width: min(
+    390px,
+    calc(100vw - 24px),
+    calc((100dvh - 24px) * 9 / 19.5)
+  );
+  aspect-ratio: 9 / 19.5;
+  max-height: calc(100dvh - 24px);
   overflow: hidden;
-  background: var(--pink);
-}
-
-.device.framed {
-  width: min(390px, 94vw);
-  min-height: min(820px, 92dvh);
-  margin: 4dvh auto;
-  border: 8px solid #242226;
+  isolation: isolate;
+  background: #171719;
+  border: 9px solid #252529;
   border-radius: 48px;
-  box-shadow: 0 20px 65px #0003;
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.28),
+    inset 0 0 0 1px rgba(255,255,255,0.25);
 }
 
-/* Dynamic Island */
+/* Full-screen mode, for later use */
+
+.device:not(.framed) {
+  width: 100vw;
+  height: 100dvh;
+  max-height: none;
+  aspect-ratio: auto;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* =================================
+   DYNAMIC ISLAND
+================================= */
 
 .dynamic-island {
   position: absolute;
-  z-index: 20;
-  width: 105px;
-  height: 30px;
-  border-radius: 30px;
-  background: #080808;
-  top: 10px;
+  z-index: 100;
+  top: 11px;
   left: 50%;
   transform: translateX(-50%);
+  width: 108px;
+  height: 32px;
+  background: #050505;
+  border-radius: 30px;
 }
 
-/* Status bar */
+/* =================================
+   STATUS BAR
+================================= */
 
 .status-bar {
-  height: 48px;
-  padding: 14px 25px 0;
+  position: absolute;
+  z-index: 90;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 52px;
+  padding: 15px 25px 0;
   display: flex;
   justify-content: space-between;
-  font-size: 14px;
-  font-weight: 650;
-  position: relative;
-  z-index: 10;
+  align-items: flex-start;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  pointer-events: none;
 }
 
-/* Lock screen */
+/* =================================
+   LOCK SCREEN
+================================= */
 
 .lock-screen {
-  min-height: calc(100dvh - 48px);
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  background: linear-gradient(
-    150deg, #f9e9ef, #ead9eb, #f3dce5
+  color: white;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(30, 24, 42, 0.18),
+      rgba(20, 17, 35, 0.35)
+    ),
+    linear-gradient(145deg, #b6a7bd, #d7b8c2 48%, #777d9b);
+}
+
+.lock-screen::before {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 55%;
+  left: -10%;
+  bottom: -10%;
+  background: radial-gradient(
+    ellipse,
+    rgba(255, 231, 235, 0.65),
+    transparent 68%
   );
+  filter: blur(25px);
 }
 
 .lock-clock {
-  margin-top: 95px;
-  font-size: 82px;
+  position: relative;
+  z-index: 1;
+  margin-top: 21%;
+  font-size: clamp(65px, 18vw, 88px);
   font-weight: 300;
   letter-spacing: -5px;
+  line-height: 1;
 }
 
 .lock-date {
-  font-size: 16px;
+  position: relative;
+  z-index: 1;
+  margin-top: 8px;
+  font-size: 15px;
+  font-weight: 500;
 }
 
 .lock-bottom {
-  margin-top: auto;
-  margin-bottom: 50px;
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 25px;
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Home screen */
+.lock-bottom span {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(30, 30, 35, 0.35);
+  backdrop-filter: blur(12px);
+}
+
+.lock-bottom button {
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 13px;
+}
+
+/* =================================
+   HOME SCREEN
+================================= */
 
 .home-screen {
-  min-height: calc(100dvh - 48px);
-  padding: 22px 22px 25px;
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  overflow: hidden;
+  padding: 85px 20px 28px;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(
-    155deg, #f8eaf0, #ead9e9, #e9e3ef
-  );
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.15),
+      rgba(255, 255, 255, 0)
+    ),
+    linear-gradient(145deg, #d7c8db, #e8cbd2 55%, #c5c6dc);
 }
 
 .home-widget {
-  padding: 18px;
-  border-radius: 23px;
-  background: var(--glass);
-  backdrop-filter: blur(20px);
-  margin: 15px 0 25px;
+  min-height: 115px;
+  padding: 17px;
+  margin-bottom: 25px;
+  border-radius: 22px;
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 25px rgba(40, 30, 50, 0.08);
+}
+
+.home-widget p {
+  margin: 0 0 7px;
+  font-size: 12px;
+}
+
+.home-widget h2 {
+  margin: 0 0 5px;
+  font-size: 21px;
+}
+
+.home-widget small {
+  font-size: 11px;
 }
 
 .app-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px 12px;
+  gap: 23px 12px;
 }
 
 .app-icon {
+  padding: 0;
+  border: none;
+  background: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  border: 0;
-  background: none;
-  color: var(--ink);
-  font-size: 12px;
+  color: white;
 }
 
-.app-icon .icon-image {
-  width: 56px;
-  height: 56px;
+.app-icon span {
+  width: 53px;
+  height: 53px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 15px;
-  background: white;
-  display: grid;
-  place-items: center;
-  font-size: 28px;
-  box-shadow: 0 4px 12px #0001;
+  background: rgba(255, 255, 255, 0.82);
+  font-size: 27px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
 
-.kakao-icon {
-  background: var(--kakao) !important;
-  color: #241f00;
+.app-icon small {
+  font-size: 10px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}
+
+.kakao-icon span {
+  background: var(--kakao);
 }
 
 .dock {
-  margin-top: auto;
-  padding: 13px;
-  border-radius: 25px;
-  background: #ffffff80;
-  backdrop-filter: blur(20px);
-  display: flex;
-  justify-content: space-around;
-}
-
-/* App window */
-
-.app-window {
-  min-height: calc(100dvh - 48px);
-  background: #fff;
-}
-
-.app-navigation {
-  padding: 15px 18px;
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 12px;
+  height: 72px;
+  padding: 0 12px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #eee;
+  justify-content: space-around;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.32);
+  backdrop-filter: blur(18px);
 }
 
-/* KakaoTalk */
+.dock span {
+  font-size: 25px;
+}
+
+/* =================================
+   APP WINDOWS
+================================= */
+
+.app-window {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  overflow: hidden;
+  padding: 60px 16px 20px;
+  background: var(--screen-bg);
+}
+
+.app-window h2 {
+  margin-top: 15px;
+}
+
+.app-window button {
+  cursor: pointer;
+}
+
+.phone-page[hidden],
+[hidden] {
+  display: none !important;
+}
+
+/* =================================
+   KAKAOTALK
+================================= */
 
 .kakao-app {
-  min-height: calc(100dvh - 48px);
+  display: flex;
+  flex-direction: column;
+  padding: 55px 0 0;
   background: #fff;
-  color: #222;
 }
 
 .kakao-header {
-  height: 55px;
-  padding: 0 18px;
+  min-height: 55px;
+  padding: 0 17px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #eee;
-  font-weight: 700;
+  background: var(--kakao);
+}
+
+.kakao-header h2 {
+  margin: 0;
+  font-size: 19px;
+}
+
+.kakao-header button {
+  border: none;
+  background: transparent;
+  font-size: 29px;
 }
 
 .kakao-tabs {
   display: flex;
   justify-content: space-around;
-  padding: 15px 5px;
-  border-top: 1px solid #eee;
+  padding: 13px 5px;
   background: #fff;
+  border-bottom: 1px solid #eee;
 }
 
 .kakao-tabs button {
-  border: 0;
-  background: none;
-  font-size: 12px;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  color: #555;
+}
+
+.kakao-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 18px;
+  background: #fff;
+}
+
+.kakao-content h3 {
+  font-size: 17px;
+}
+
+.kakao-content p {
+  font-size: 13px;
   color: #777;
 }
 
-.kakao-yellow {
+.kakao-content button {
+  border: none;
+  border-radius: 12px;
+  padding: 10px 14px;
   background: var(--kakao);
 }
 
-/* Full screen mode */
-
-body.fullscreen-mode {
-  background: var(--pink);
+.kakao-yellow {
+  min-height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fafafa;
+  border-top: 1px solid #eee;
+  font-size: 12px;
+  color: #888;
 }
 
-body.fullscreen-mode .device {
-  width: 100%;
-  min-height: 100dvh;
-  border: 0;
-  border-radius: 0;
-  margin: 0;
-  box-shadow: none;
-}
+/* =================================
+   SMALL SCREEN ADJUSTMENTS
+================================= */
 
-@media (min-width: 600px) {
+@media (max-width: 420px) {
   body {
-    padding: 20px;
+    padding: 0;
+    background: #171719;
+  }
+
+  .device.framed {
+    width: min(
+      calc(100vw - 18px),
+      calc((100dvh - 18px) * 9 / 19.5)
+    );
+    border-width: 6px;
+    border-radius: 42px;
+  }
+
+  .lock-clock {
+    margin-top: 24%;
   }
 }
