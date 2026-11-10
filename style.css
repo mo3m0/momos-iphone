@@ -521,3 +521,99 @@ body {
   border-radius: 10px;
   background: white;
 }
+
+/* iPhone Passcode Screen */
+
+.passcode-screen {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(245, 242, 248, 0.96);
+  color: #24232a;
+  text-align: center;
+}
+
+.passcode-screen[hidden] {
+  display: none !important;
+}
+
+.passcode-content {
+  width: 100%;
+  padding: 35px 28px 24px;
+}
+
+.passcode-content h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+#passcodeMessage {
+  min-height: 22px;
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 30px;
+}
+
+.passcode-dots {
+  display: flex;
+  justify-content: center;
+  gap: 19px;
+  margin-bottom: 38px;
+}
+
+.passcode-dot {
+  width: 13px;
+  height: 13px;
+  border: 1.5px solid #555;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.passcode-dot.filled {
+  background: #333;
+}
+
+.number-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 13px 20px;
+  max-width: 270px;
+  margin: 0 auto;
+}
+
+.number-pad button {
+  width: 70px;
+  height: 70px;
+  border: none;
+  border-radius: 50%;
+  background: #e5e3e9;
+  color: #25232a;
+  font-size: 29px;
+  font-weight: 400;
+  cursor: pointer;
+  justify-self: center;
+  transition: background 0.15s;
+}
+
+.number-pad button:active {
+  background: #c9c6d0;
+}
+
+.number-pad .delete-key {
+  background: transparent;
+  font-size: 24px;
+}
+
+.passcode-cancel {
+  margin-top: 25px;
+  border: none;
+  background: transparent;
+  color: #555;
+  font-size: 15px;
+  padding: 10px 20px;
+}
+
