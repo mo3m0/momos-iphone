@@ -30,25 +30,126 @@
 
     </div>
 
-    <!-- Lock Screen -->
+    <!-- iPhone Lock Screen -->
 
-    <section class="lock-screen" id="lockScreen">
+<section class="lock-screen" id="lockScreen">
 
-      <div class="lock-clock">9:41</div>
+  <div class="lock-date">
 
-      <div class="lock-date">Tuesday, November 10</div>
+    Tuesday, November 10
 
-      <div class="lock-bottom">
+  </div>
 
-        <span>🔦</span>
+  <div class="lock-clock">
 
-        <button onclick="unlockPhone()">點一下解鎖 ↑</button>
+    9:41
 
-        <span>📷</span>
+  </div>
 
-      </div>
+  <div class="lock-widgets">
 
-    </section>
+    <div class="lock-widget">
+
+      <span>☀️</span>
+
+      <small>Sunny</small>
+
+      <strong>24°</strong>
+
+    </div>
+
+  </div>
+
+  <div class="lock-bottom">
+
+    <button class="lock-shortcut" type="button">
+
+      🔦
+
+    </button>
+
+    <div class="unlock-area" onclick="unlockPhone()">
+
+      <div class="unlock-line"></div>
+
+      <span>向上滑動以解鎖</span>
+
+    </div>
+
+    <button class="lock-shortcut" type="button">
+
+      📷
+
+    </button>
+
+  </div>
+
+</section>
+    
+
+<!-- Passcode Screen -->
+
+<section class="passcode-screen" id="passcodeScreen" hidden>
+
+  <div class="passcode-content">
+
+    <h2 id="passcodeTitle">設定四位數密碼</h2>
+
+    <p id="passcodeMessage">
+
+      請輸入四位數密碼
+
+    </p>
+
+    <div class="passcode-dots">
+
+      <span class="passcode-dot"></span>
+
+      <span class="passcode-dot"></span>
+
+      <span class="passcode-dot"></span>
+
+      <span class="passcode-dot"></span>
+
+    </div>
+
+    <div class="number-pad">
+
+      <button onclick="Passcode.press(1)">1</button>
+
+      <button onclick="Passcode.press(2)">2</button>
+
+      <button onclick="Passcode.press(3)">3</button>
+
+      <button onclick="Passcode.press(4)">4</button>
+
+      <button onclick="Passcode.press(5)">5</button>
+
+      <button onclick="Passcode.press(6)">6</button>
+
+      <button onclick="Passcode.press(7)">7</button>
+
+      <button onclick="Passcode.press(8)">8</button>
+
+      <button onclick="Passcode.press(9)">9</button>
+
+      <span></span>
+
+      <button onclick="Passcode.press(0)">0</button>
+
+      <button class="delete-key" onclick="Passcode.erase()">⌫</button>
+
+    </div>
+
+    <button class="passcode-cancel" onclick="Passcode.hide()">
+
+      取消
+
+    </button>
+
+  </div>
+
+</section>
 
     <!-- Home Screen -->
 
